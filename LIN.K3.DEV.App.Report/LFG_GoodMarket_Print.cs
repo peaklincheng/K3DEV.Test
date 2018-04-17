@@ -36,7 +36,7 @@ namespace LIN.K3.DEV.BILLPLUGIN
 
         public override void OnPrepareNotePrintData(PreparePrintDataEventArgs e)
         {
-         
+
             base.OnPrepareNotePrintData(e);
             DynamicObject[] dataObject = e.DataObjects;
             for (int i = 0; i < dataObject.Length; i++)
@@ -45,12 +45,17 @@ namespace LIN.K3.DEV.BILLPLUGIN
                 // entryObject["FSumQty"] = "测试";
 
                 string url = @"http://192.168.8.64/k3cloud/";
+                string defaultURl = @"";
                 string filepath = entryObject["FPICTURE"].ToString();
-                string allurl = url + filepath;
-                entryObject["FPICTURE"] = allurl;
-                
-                
-               
+                if (!filepath.IsNullOrEmptyOrWhiteSpace())
+                    {
+                    string allurl = url + filepath;
+                    entryObject["FPICTURE"] = allurl;
+                }
+           
+
+
+
 
 
 
